@@ -4,7 +4,6 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        // Pull code from GitHub
         git url: 'https://github.com/Stelyan1/StudentRegistryApp2', branch: 'master'
       }
     }
@@ -23,8 +22,7 @@ pipeline {
 
     stage('Start Application') {
       steps {
-        sh 'npm start & sleep 5'  // Run in background temporarily for verification
-        // Optionally add curl or health check logic here
+        sh 'npm start & sleep 5'
       }
     }
   }
