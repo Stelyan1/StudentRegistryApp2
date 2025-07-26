@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git url: 'https://github.com/Stelyan1/StudentRegistryApp2', branch: 'master'
+        git 'https://github.com/Stelyan1/StudentRegistryApp2.git'
       }
     }
 
@@ -20,19 +20,19 @@ pipeline {
       }
     }
 
-    stage('Start Application') {
+    stage('Build') {
       steps {
-        sh 'npm start & sleep 5'
+        sh 'npm run build'
       }
     }
   }
 
   post {
     success {
-      echo '✅ Build completed successfully.'
+      echo 'CI passed!'
     }
     failure {
-      echo '❌ Build failed.'
+      echo 'CI failed!'
     }
   }
 }
